@@ -39,6 +39,7 @@ public class GoogleSteps {
 
     @Then("user should see result are more {int}")
     public void userShouldSeeResultAreMore(int result) {
+        // About 11,090,000,000 results
         Assert.assertTrue(TextHandler.getLong(googleSearchPage.resultBar.getText().split(" ")[1]) > result);
     }
 }
