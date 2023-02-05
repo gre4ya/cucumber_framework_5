@@ -18,7 +18,7 @@ public class TechGlobalFrontendTestingHomePage extends TechGlobalBasePage{
 
     public void getFrontendTestingPage(){
         headerDropdown.click();
-        headerDropDownOptions.get(0).click();
+        headerDropdownOptions.get(0).click();
     }
 
 

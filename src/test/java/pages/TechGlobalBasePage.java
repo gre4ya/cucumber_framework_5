@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import utilities.Driver;
+import utils.Driver;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class TechGlobalBasePage {
     @FindBy(id = "dropdown-button")
     public WebElement headerDropdown;
     @FindBy(css = "#dropdown-menu a")
-    public List<WebElement> headerDropDownOptions;
+    public List<WebElement> headerDropdownOptions;
 
     @FindBy(css = ".Footer_footer__kXlYa p")
     public List<WebElement> footerParagraphs;
