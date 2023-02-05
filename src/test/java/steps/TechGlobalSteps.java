@@ -46,10 +46,8 @@ public class TechGlobalSteps {
                 techGlobalFrontendTestingHomePage.headerDropdownOptions.get(0).click();
                 break;
             case "Dynamic Tables":
-                techGlobalFrontendTestingHomePage.clickOnCard(option);
-                break;
             case "Alerts":
-                techGlobalFrontendTestingHomePage.clickOnCard("Alerts");
+                techGlobalFrontendTestingHomePage.clickOnCard(option);
                 break;
             default:
                 throw new NotFoundException();
