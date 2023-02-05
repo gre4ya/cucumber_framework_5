@@ -9,4 +9,4 @@ Feature: TechGlobal Training Functionalities
     When user clicks the "ADD PRODUCT" button
     Then validate "Add New Product" pop-up is displayed
     When user clicks the "CLOSE" button
-    #Then user should not see Add New Product pop-up
+    Then user should not see Add New Product pop-up

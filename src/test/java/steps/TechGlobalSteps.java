@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import pages.TechGlobalDynamicTablesPage;
 import pages.TechGlobalFrontendTestingHomePage;
 import utils.Driver;
+import utils.Waiter;
 
 public class TechGlobalSteps {
 
@@ -32,7 +33,7 @@ public class TechGlobalSteps {
 
     @And("user selects the {string} option")
     public void userSelectsTheOption(String option) {
-        switch (option){
+        switch (option) {
             case "Frontend Testing":
                 techGlobalFrontendTestingHomePage.headerDropdownOptions.get(0).click();
                 break;
@@ -40,19 +41,19 @@ public class TechGlobalSteps {
                 techGlobalFrontendTestingHomePage.clickOnCard(option);
                 break;
             default:
-                throw new NotFoundException("Provided option is not defined properly in feature file");
+                throw new NotFoundException();
         }
-
     }
 
     @Then("user should see {string} heading")
     public void userShouldSeeHeading(String headerText) {
         Assert.assertEquals(headerText, techGlobalDynamicTablesPage.headingText.getText());
     }
-
     @When("user clicks the {string} button")
     public void userClicksTheButton(String argument) {
-        switch(argument){
+        Waiter.pause(3);
+
+        switch (argument){
             case "ADD PRODUCT":
                 techGlobalDynamicTablesPage.addProductButton.click();
                 break;
@@ -60,8 +61,10 @@ public class TechGlobalSteps {
                 techGlobalDynamicTablesPage.closeButton.click();
                 break;
             default:
-                throw new NotFoundException("Button text is not defined properly in feature file");
+                throw new NotFoundException("The button text is not defined properly in the feature file");
         }
+        Waiter.pause(3);
+
     }
 
     @Then("validate {string} pop-up is displayed")
@@ -73,4 +76,6 @@ public class TechGlobalSteps {
     public void userShouldNotSeeAddNewProductPopUp() {
         Assert.assertFalse(techGlobalDynamicTablesPage.modalCardTitle.isDisplayed());
     }
+
+
 }
