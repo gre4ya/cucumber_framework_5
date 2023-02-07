@@ -11,6 +11,7 @@ utils/TextHandler.class
 runners/Runner.class
 utils/AlertHandler.class
 pages/TechGlobalFrontendTestingHomePage.class
+pages/TechGlobalLoginFormPage.class
 utils/DropdownHandler.class
 utils/Driver.class
 pages/GoogleSearchPage.class

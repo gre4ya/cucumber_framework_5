@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import pages.TechGlobalAlertsPage;
 import pages.TechGlobalDynamicTablesPage;
 import pages.TechGlobalFrontendTestingHomePage;
+import pages.TechGlobalLoginFormPage;
 import utils.AlertHandler;
 import utils.Driver;
 import utils.Waiter;
@@ -25,6 +26,7 @@ public class TechGlobalSteps {
     TechGlobalFrontendTestingHomePage techGlobalFrontendTestingHomePage;
     TechGlobalDynamicTablesPage techGlobalDynamicTablesPage;
     TechGlobalAlertsPage techGlobalAlertsPage;
+    TechGlobalLoginFormPage techGlobalLoginFormPage;
 
     @Before
     public void setup(){
@@ -32,6 +34,7 @@ public class TechGlobalSteps {
         techGlobalFrontendTestingHomePage = new TechGlobalFrontendTestingHomePage();
         techGlobalDynamicTablesPage= new TechGlobalDynamicTablesPage();
         techGlobalAlertsPage = new TechGlobalAlertsPage();
+        techGlobalLoginFormPage = new TechGlobalLoginFormPage();
     }
 
     @When("user clicks on Practices dropdown in the header")
@@ -47,6 +50,7 @@ public class TechGlobalSteps {
                 break;
             case "Dynamic Tables":
             case "Alerts":
+            case "Login Form":
                 techGlobalFrontendTestingHomePage.clickOnCard(option);
                 break;
             default:
@@ -63,6 +67,10 @@ public class TechGlobalSteps {
             case "Alerts":
                 Assert.assertEquals(headerText, techGlobalAlertsPage.headingText.getText());
                 break;
+                 case "Login Form":
+                Assert.assertEquals(headerText, techGlobalLoginFormPage.mainHeading.getText());
+                break;
+
             default:
                 throw new NotFoundException();
         }
@@ -122,4 +130,15 @@ public class TechGlobalSteps {
         AlertHandler.acceptAlert();
     }
 
+    @When("user enters username as {string} and password as {string}")
+    public void user_enters_username_as_and_password_as(String username, String password) {
+        techGlobalLoginFormPage.usernameInput.sendKeys(username);
+        techGlobalLoginFormPage.usernameInput.sendKeys(password);
+        techGlobalLoginFormPage.loginButton.click();
+    }
+
+    @Then("user should see a {string} message")
+    public void user_should_see_a_message(String errorMessage) {
+      Assert.assertEquals(errorMessage, techGlobalLoginFormPage.invalid_username_message.getText());
+    }
 }
