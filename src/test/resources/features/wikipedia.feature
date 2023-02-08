@@ -1,7 +1,8 @@
 Feature: Wikipedia Search
 
+  Background: Given user navigates to "https://www.wikipedia.org/"
+
   Scenario Outline: Validate Elon Musk search
-  Given user navigates to "https://www.wikipedia.org/"
   When user searches for "<name>" on Wikipedia
   Then user should see "<name>" in the title
   And user should see "<name>" in the url
@@ -12,3 +13,9 @@ Feature: Wikipedia Search
     |Elon Musk|
     |Bill Gates|
     |Johnny Depp|
+
+  @WikiLanguages
+  Scenario: Validate Wikipedia main languages
+    Then user should see below languages around the logo
+      | English | Русский | 日本語 | Deutsch | Français | Español | Italiano | 中文 | فارسی | Polski |
+

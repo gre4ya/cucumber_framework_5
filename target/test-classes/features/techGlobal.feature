@@ -18,7 +18,8 @@ Feature: TechGlobal Training Functionalities
     And user selects the "Frontend Testing" option
     And user selects the "Alerts" option
     Then user should see "Alerts" heading
-    And user should see buttons as "Warning alert", "Confirmation alert", and "Prompt alert"
+    And user should see buttons as below
+        |Warning alert|Confirmation alert|Prompt alert|
     And user should see "Result:" text
     When user clicks on "Warning alert" box
     Then user should see a popup displaying message "You are on TechGlobal Training application."

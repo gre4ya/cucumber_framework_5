@@ -4,6 +4,7 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.cucumber.datatable.DataTable;
 import org.junit.Assert;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.NotFoundException;
@@ -103,11 +104,10 @@ public class TechGlobalSteps {
         Assert.assertTrue(true);}
     }
 
-    @Then("user should see buttons as {string}, {string}, and {string}")
-    public void user_should_see_buttons_as_and(String button1, String button2, String button3) {
-        String[] buttonsExpected = {button1, button2, button3};
+    @Then("user should see buttons as below")
+    public void user_should_see_buttons_as_and(DataTable warningButtons) {
         IntStream.range(0, techGlobalAlertsPage.alertButtons.size()).forEach(i -> {
-            Assert.assertEquals(buttonsExpected[i], techGlobalAlertsPage.alertButtons.get(i).getText());
+            Assert.assertEquals(warningButtons.asList().get(i), techGlobalAlertsPage.alertButtons.get(i).getText());
         });
     }
 
