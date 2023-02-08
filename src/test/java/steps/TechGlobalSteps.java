@@ -8,7 +8,6 @@ import org.junit.Assert;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pages.TechGlobalAlertsPage;
 import pages.TechGlobalDynamicTablesPage;
 import pages.TechGlobalFrontendTestingHomePage;
@@ -133,12 +132,25 @@ public class TechGlobalSteps {
     @When("user enters username as {string} and password as {string}")
     public void user_enters_username_as_and_password_as(String username, String password) {
         techGlobalLoginFormPage.usernameInput.sendKeys(username);
-        techGlobalLoginFormPage.usernameInput.sendKeys(password);
+        techGlobalLoginFormPage.passwordInput.sendKeys(password);
         techGlobalLoginFormPage.loginButton.click();
     }
 
     @Then("user should see a {string} message")
     public void user_should_see_a_message(String errorMessage) {
-      Assert.assertEquals(errorMessage, techGlobalLoginFormPage.invalid_username_message.getText());
+        switch(errorMessage){
+            case "Invalid Username entered!":
+                Assert.assertEquals(errorMessage, techGlobalLoginFormPage.invalid_username_message.getText());
+                break;
+            case "Invalid Password entered!":
+                Assert.assertEquals(errorMessage, techGlobalLoginFormPage.invalid_password_message.getText());
+                break;
+
+            case "You are logged in":
+                Assert.assertEquals(errorMessage, techGlobalLoginFormPage.success_login_message.getText());
+                break;
+            default:
+                throw new NotFoundException("The error is not defined properly in the feature file");
+        }
     }
 }

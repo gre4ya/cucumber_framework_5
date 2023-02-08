@@ -28,10 +28,13 @@ public class TechGlobalLoginFormPage extends TechGlobalBasePage{
     public WebElement loginMessageText;
     @FindBy(xpath = "//*[text()='Login Form']")
     public WebElement loginFormText;
-    @FindBy(xpath = "//*[text()='Invalid Username entered!']")
+    @FindBy(id = "error_message")
     public WebElement invalid_username_message;
-    @FindBy(xpath = "//*[text()='Invalid Password entered!']")
+    @FindBy(id = "error_message")
     public WebElement invalid_password_message;
+    @FindBy(id = "success_lgn")
+    public WebElement success_login_message;
+
 
 
 
