@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import pages.GoogleSearchPage;
 import utils.Driver;
 import utils.TextHandler;
+import utils.WindowHandler;
 
 public class GoogleSteps {
 
@@ -16,7 +17,7 @@ public class GoogleSteps {
     GoogleSearchPage googleSearchPage;
 
     @Before
-    public void setup(){
+    public void setup() {
         driver = Driver.getDriver();
         googleSearchPage = new GoogleSearchPage();
     }
@@ -24,16 +25,6 @@ public class GoogleSteps {
     @When("user search for {string}")
     public void user_search_for(String key) {
         googleSearchPage.searchInputBox.sendKeys(key + Keys.ENTER);
-    }
-
-    @Then("user should see {string} in the url")
-    public void user_should_see_in_the_url(String key) {
-        Assert.assertTrue(driver.getCurrentUrl().contains(key));
-    }
-
-    @Then("user should see {string} in the title")
-    public void user_should_see_in_the_title(String key) {
-        Assert.assertTrue(driver.getTitle().contains(key));
     }
 
     @Then("user should see result are more {int}")

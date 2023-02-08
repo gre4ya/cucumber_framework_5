@@ -1,8 +1,10 @@
 utils/WindowHandler.class
+steps/WikiSteps.class
 steps/TechGlobalSteps.class
 pages/TechGlobalDynamicTablesPage.class
 steps/GoogleSteps.class
 steps/BaseSteps.class
+pages/WikipediaSearchPage.class
 utils/Waiter.class
 pages/TechGlobalBasePage.class
 steps/Hooks.class
