@@ -6,6 +6,7 @@ import cucumber.api.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import utils.Driver;
+import utils.Waiter;
 import utils.WindowHandler;
 
 public class BaseSteps {
@@ -24,13 +25,13 @@ public class BaseSteps {
 
     @Then("user should see {string} in the url")
     public void user_should_see_in_the_url(String key) {
-        WindowHandler.switchToChildWindow();
-        Assert.assertTrue(driver.getCurrentUrl().contains(key));
+        for (String word : key.split(" ")) {
+            Assert.assertTrue(driver.getCurrentUrl().contains(word));
+        }
+//    Assert.assertTrue(driver.getCurrentUrl().trim().replaceAll(" ", "_").contains(key));
     }
     @Then("user should see {string} in the title")
     public void user_should_see_in_the_title(String key) {
         Assert.assertTrue(driver.getTitle().contains(key));
     }
-
-
 }

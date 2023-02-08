@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import pages.WikipediaSearchPage;
 import utils.Driver;
+import utils.Waiter;
 import utils.WindowHandler;
 
 public class WikiSteps {

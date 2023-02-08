@@ -1,7 +1,14 @@
 Feature: Wikipedia Search
-  Scenario: Validate Elon Musk search
+
+  Scenario Outline: Validate Elon Musk search
   Given user navigates to "https://www.wikipedia.org/"
-  When user searches for "Elon Musk" on Wikipedia
-  Then user should see "Elon Musk" in the title
-  And user should see "Elon Musk" in the url
-  And user should see "Elon Musk" in the first heading
+  When user searches for "<name>" on Wikipedia
+  Then user should see "<name>" in the title
+  And user should see "<name>" in the url
+  And user should see "<name>" in the first heading
+
+  Examples:
+    |name|
+    |Elon Musk|
+    |Bill Gates|
+    |Johnny Depp|
